@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Matter from "matter-js";
 import "matter-attractors";
 import "matter-wrap";
+import Scene from "./Scene";
 
 const MatterDemo = () => {
   const canvasRef = useRef(null);
@@ -15,8 +16,8 @@ const MatterDemo = () => {
     if (!canvasRef.current) return;
 
     const dimensions = {
-      width: window.innerWidth,
-      height: window.innerHeight,
+      width: window.innerWidth - 20,
+      height: window.innerHeight - 10,
     };
     // Create engine
     engine = Matter.Engine.create();
@@ -171,7 +172,7 @@ const MatterDemo = () => {
     };
   }, []);
 
-  return <div ref={canvasRef} className="" />;
+  return <div ref={canvasRef} className="absolute hidden lg:block" />;
 };
 
 export default MatterDemo;

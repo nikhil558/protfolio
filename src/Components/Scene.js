@@ -1,5 +1,5 @@
 import Matter from "matter-js";
-import  {Fragment, useEffect, useRef} from "react";
+import { Fragment, useEffect, useRef } from "react";
 
 const Scene = () => {
   const requestRef = useRef();
@@ -15,7 +15,7 @@ const Scene = () => {
       body: Matter.Bodies.rectangle(150, 0, 40, 40),
       elem: boxRef.current,
       render() {
-        const {x, y} = this.body.position;
+        const { x, y } = this.body.position;
         this.elem.style.top = `${y - 20}px`;
         this.elem.style.left = `${x - 20}px`;
         this.elem.style.transform = `rotate(${this.body.angle}rad)`;
@@ -26,17 +26,12 @@ const Scene = () => {
       200, // y
       400, // w
       120, // h
-      {isStatic: true}
+      { isStatic: true }
     );
-    const mouseConstraint = Matter.MouseConstraint.create(
-      engine,
-      {element: document.body}
-    );
-    Matter.Composite.add(engine.world, [
-      box.body,
-      ground,
-      mouseConstraint,
-    ]);
+    const mouseConstraint = Matter.MouseConstraint.create(engine, {
+      element: document.body,
+    });
+    Matter.Composite.add(engine.world, [box.body, ground, mouseConstraint]);
 
     (function rerender() {
       box.render();
@@ -63,4 +58,4 @@ const Scene = () => {
   );
 };
 
-export default Scene
+export default Scene;

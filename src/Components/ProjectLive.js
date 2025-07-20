@@ -5,12 +5,13 @@ const ProjectLive = ({ project, index }) => {
     <a
       href={project.link}
       target="_blank"
+      rel="noopener noreferrer"
       className={`flex w-full relative justify-center sm:${
         index % 2 ? "justify-end" : "justify-start"
       }`}
     >
       <div className="flex flex-col items-center relative group sm:hover:scale-105 ease-in-out duration-200">
-        <div className={`relative mx-auto max-w-[300px]`}>
+        <div className="relative mx-auto max-w-[300px]">
           <div className="relative w-full max-w-4xl mx-auto">
             <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-t-2xl p-6 shadow-2xl">
               <div className="bg-black rounded-lg p-3 shadow-inner">
@@ -20,13 +21,10 @@ const ProjectLive = ({ project, index }) => {
                     alt={project.name}
                     className="w-full h-full object-fill"
                   />
-
                   <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none"></div>
-
                   <div className="absolute inset-0 shadow-inner pointer-events-none"></div>
                 </div>
               </div>
-
               <div className="absolute top-3 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-700 rounded-full"></div>
             </div>
           </div>

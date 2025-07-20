@@ -1,7 +1,46 @@
-import React from "react";
+import React, { useRef } from "react";
+import emailjs from "emailjs-com";
 import ContactMe from "../assets/images/ContactMe.svg";
 
 const ContactSection = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    const name = form.current.name.value;
+    const email = form.current.email.value;
+    const message = form.current.message.value;
+
+    if (!name || !email || !message) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    // Send email
+    emailjs
+      .sendForm(
+        "service_wccw8bo", // replace with your EmailJS service ID
+        "template_hby2jlm", // replace with your EmailJS template ID
+        form.current,
+        "F6DuNU7aDmVsZ15Ft" // replace with your EmailJS public key
+      )
+      .then(
+        () => {
+          alert("Message sent successfully via email!");
+        },
+        (error) => {
+          console.error("Failed:", error.text);
+        }
+      );
+
+    // Open WhatsApp with message
+    // const whatsappText = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+    // window.open(`https://wa.me/7337479789?text=${whatsappText}`, "_blank");
+
+    e.target.reset();
+  };
+
   return (
     <section className="max-w-screen-xl mx-auto px-4 pb-12">
       <h2 className="text-3xl sm:text-[40px] bg-[#111] relative z-10 font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae] sm:border-2 border-[#1788ae] rounded-md">
@@ -9,9 +48,14 @@ const ContactSection = () => {
       </h2>
       <div className="flex flex-col md:flex-row items-center mt-10">
         <div className="w-full">
-          <img src={ContactMe} alt="phone" />
+          <img src={ContactMe} alt="contactme" />
         </div>
-        <form className="w-full" name="contactUS">
+        <form
+          ref={form}
+          onSubmit={sendEmail}
+          className="w-full"
+          name="contactUS"
+        >
           <label
             htmlFor="name"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -80,6 +124,11 @@ const ContactSection = () => {
               className="bg-gray-50 border-2 outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#1788ae] focus:border-[#1788ae] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
             ></textarea>
           </div>
+          <input
+            type="hidden"
+            name="time"
+            value={new Date().toLocaleString()}
+          />
           <button
             type="submit"
             className="w-full text-white bg-[#1788ae] hover:bg-[#1280a4] focus:ring-4 focus:ring-[#4489a0] font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none"
