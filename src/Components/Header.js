@@ -41,7 +41,7 @@ const Header = () => {
         <a
           href="tel:7447479789"
           target="_blank"
-          className="hidden sm:block"
+          className=""
           rel="noopener noreferrer"
         >
           <div
