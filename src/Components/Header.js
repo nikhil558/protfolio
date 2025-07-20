@@ -39,7 +39,7 @@ const Header = () => {
           )}
         </button>
         <a
-          href="tel:7447479789"
+          href="tel:+917337479789"
           target="_blank"
           className=""
           rel="noopener noreferrer"
