@@ -21,7 +21,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: "/protfolio/",
+  base: "/portfolio/",
   optimizeDeps: {
     force: true,
     esbuildOptions: {

@@ -1,9 +1,9 @@
 {
-  "name": "protfilio",
+  "name": "portfilio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://nikhil558.github.io/protfolio",
+  "homepage": "https://nikhil558.github.io/portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
